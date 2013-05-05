@@ -162,11 +162,13 @@ class Matrix:
                 x += 1
                 y += 1
         else:
-            return false
+            return False
         return [x,y]
     
     def checkInfection(self, chance):
-        if randrange(0, 1001) <= int(round(chance * 10)):
+        bigChance = int(round(chance * 10))
+        randChance = randrange(0, 1001)
+        if randChance <= bigChance:
             return True
         return False
     
@@ -178,12 +180,15 @@ class Matrix:
         if vacUnvac == "vaccinated":
             infectedReplacement = "vacInfected"
             cleanReplacement = "vacSurvivor"
+            chance = self.chanceVacInfected
         else:
             infectedReplacement = "unvacInfected"
             cleanReplacement = "unvacSurvivor"
+            chance = self.chanceUnvacInfected
 
         if not self.infectedMatrix[x][y] in [infectedReplacement, cleanReplacement, "infected"]:
-            if self.checkInfection(self.chanceUnvacInfected):
+            infected = self.checkInfection(chance)
+            if infected:
                 self.infectedMatrix[x][y] = infectedReplacement
                 self.infect(position)
             else:
@@ -224,21 +229,23 @@ class Matrix:
             x = randrange(0, self.width)
             y = randrange(0, self.width)
             if self.matrix[x][y] == "vaccinated":
-                self.matrix[x][y] = "vaccinated"
+                self.matrix[x][y] = "unvaccinated"
                 count += 1
 
         self.primed = True
 
     def primeInfectedMatrix(self):
-        self.infectedMatrix = [["" if self.matrix[x][y] != "infected" else "infected" for x in range(self.width)] for y in range(self.width)]
+        self.infectedMatrix = [["" if self.matrix[x][y] != "infected" else "infected" for y in range(self.width)] for x in range(self.width)]
 
     def propagate(self):
         # Check if primed button has been pressed
         if not self.primed:
             return False
+        
+        self.primed = False
 
         # reset and prime infected matrix
-        self.infectedMatrix = [["unvacSurvivor" if self.matrix[x][y] != "infected" else "infected" for x in range(self.width)] for y in range(self.width)]
+        self.infectedMatrix = [["unvacSurvivor" if self.matrix[x][y] != "infected" else "infected" for y in range(self.width)] for x in range(self.width)]
 
         # start infection at all original infection sites
         for x in range(self.width):

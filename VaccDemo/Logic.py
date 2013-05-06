@@ -46,7 +46,7 @@ class Matrix:
                 self._matrix[x][y] = "infected"
                 count += 1
         # set vaccinated people
-        while count < self._numVaccinated:
+        while count < self._numVaccinated + self._numInfected:
             x = randrange(0, self.cardinalWidth)
             y = randrange(0, self.cardinalWidth)
             if self._matrix[x][y] == "unvaccinated":

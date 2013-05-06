@@ -33,6 +33,12 @@ class GraphInfect(QDialog, newvacc.Ui_Dialog, Logic.Matrix):
             QMessageBox.information(self, "Error", "You must prime the matrix first!")
         else:
             self.propagate()
+            self.numFinalInfected = 0
+            for x in range(self.cardinalWidth):
+                for y in range(self.cardinalWidth):
+                    if self.contactMatrix[x][y] and self.canInfectMatrix[x][y]:
+                        self.numFinalInfected += 1
+            self.showNumInfected.setText(str(self.numFinalInfected))
             self.lastPressed = "infect"
             self.update()
 

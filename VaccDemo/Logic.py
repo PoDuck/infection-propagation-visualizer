@@ -5,11 +5,12 @@ Created on May 5, 2013
 '''
 from random import randrange
 from math import sqrt
+import sys
 
 class Matrix:
     def __init__(self):
         pass
-
+    
     def prime(self, numPeople, numVaccinated, numInfected, chanceVacInfected, chanceUnvacInfected):
         """
         Initialize all matrices.
@@ -95,11 +96,15 @@ class Matrix:
         return False
     
     def spread(self, position):
+        positions = []
         for direction in self._directions:
             (x, y) = self.changePosition(position, direction)
             if self.canInfectMatrix[x][y] and not self.contactMatrix[x][y]:
                 self.contactMatrix[x][y] = True
-                self.spread([x,y])
+                positions.append([x,y])
+        if positions:
+            return positions
+        return []
     
     def propagate(self):
         # initialize canInfectMatrix and contactMatrix
@@ -112,8 +117,13 @@ class Matrix:
         for x in range(self.cardinalWidth):
             for y in range(self.cardinalWidth):
                 if self._matrix[x][y] == "infected":
-                    self.spread([x,y])
-    
+                    positions = [[x,y]]
+                    while positions:
+                        position = self.spread(positions.pop())
+                        if position:
+                            for p in position:
+                                positions.append(p)
+                        
     def getFinal(self, position):
         """
         infected = infected

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'newvacc.ui'
 #
-# Created: Mon May  6 02:56:39 2013
+# Created: Mon May  6 03:06:31 2013
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -114,6 +114,12 @@ class Ui_Dialog(object):
         self.matrixWidthBox.setProperty("value", 50)
         self.matrixWidthBox.setObjectName(_fromUtf8("matrixWidthBox"))
         self.gridLayout.addWidget(self.matrixWidthBox, 0, 1, 1, 1)
+        self.label_6 = QtGui.QLabel(self.layoutWidget)
+        self.label_6.setObjectName(_fromUtf8("label_6"))
+        self.gridLayout.addWidget(self.label_6, 0, 3, 1, 1)
+        self.showNumInfected = QtGui.QLabel(self.layoutWidget)
+        self.showNumInfected.setObjectName(_fromUtf8("showNumInfected"))
+        self.gridLayout.addWidget(self.showNumInfected, 0, 4, 1, 1)
         self.line = QtGui.QFrame(Dialog)
         self.line.setGeometry(QtCore.QRect(10, 200, 561, 20))
         self.line.setFrameShape(QtGui.QFrame.HLine)
@@ -146,6 +152,8 @@ class Ui_Dialog(object):
         self.label_2.setText(QtGui.QApplication.translate("Dialog", "# of people Vaccinated:", None, QtGui.QApplication.UnicodeUTF8))
         self.showUnvacNum.setText(QtGui.QApplication.translate("Dialog", "#UnVac", None, QtGui.QApplication.UnicodeUTF8))
         self.showVacNum.setText(QtGui.QApplication.translate("Dialog", "#Vac", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_6.setText(QtGui.QApplication.translate("Dialog", "Final Number Infected:", None, QtGui.QApplication.UnicodeUTF8))
+        self.showNumInfected.setText(QtGui.QApplication.translate("Dialog", "Null", None, QtGui.QApplication.UnicodeUTF8))
 
 
 if __name__ == "__main__":

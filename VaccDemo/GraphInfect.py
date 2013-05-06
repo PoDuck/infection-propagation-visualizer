@@ -1,3 +1,9 @@
+'''
+Created on May 5, 2013
+
+@author: poduck
+'''
+
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 import sys

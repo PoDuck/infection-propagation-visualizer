@@ -98,15 +98,16 @@ class Matrix:
         for direction in self._directions:
             (x, y) = self.changePosition(position, direction)
             if self.canInfectMatrix[x][y] and not self.contactMatrix[x][y]:
-                self.canInfectMatrix[x][y] = False
                 self.contactMatrix[x][y] = True
                 self.spread([x,y])
     
     def propagate(self):
         # initialize canInfectMatrix and contactMatrix
         self.contactMatrix = [[False for row in range(self.cardinalWidth)] for col in range(self.cardinalWidth)]
-        self.canInfectMatrix = [[self.getsInfected(self._matrix[col][row]) for row in range(self.cardinalWidth)] for col in range(self.cardinalWidth)]
-        print self.canInfectMatrix
+        self.canInfectMatrix = [[False for row in range(self.cardinalWidth)] for col in range(self.cardinalWidth)]
+        for col in range(self.cardinalWidth):
+            for row in range(self.cardinalWidth):
+                self.canInfectMatrix[row][col] = self.getsInfected(self._matrix[col][row])
         # Spread infection.
         for x in range(self.cardinalWidth):
             for y in range(self.cardinalWidth):

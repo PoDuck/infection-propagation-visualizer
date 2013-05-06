@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'newvacc.ui'
 #
-# Created: Sun May  5 19:48:50 2013
+# Created: Mon May  6 02:56:39 2013
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -110,7 +110,8 @@ class Ui_Dialog(object):
         self.gridLayout.addWidget(self.numVaccinatedBox, 1, 2, 1, 1)
         self.matrixWidthBox = QtGui.QSpinBox(self.layoutWidget)
         self.matrixWidthBox.setMinimum(2)
-        self.matrixWidthBox.setMaximum(100)
+        self.matrixWidthBox.setMaximum(50)
+        self.matrixWidthBox.setProperty("value", 50)
         self.matrixWidthBox.setObjectName(_fromUtf8("matrixWidthBox"))
         self.gridLayout.addWidget(self.matrixWidthBox, 0, 1, 1, 1)
         self.line = QtGui.QFrame(Dialog)

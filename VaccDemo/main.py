@@ -1,12 +1,14 @@
-from vacclogic import *
-
+from logic import Matrix
 
 def main():
-    matrix = Matrix()
-    matrix.primeMatrix(100, 80, 5, 15.1, 75.5)
-    if matrix.propagate():
-        print list(matrix.infectedMatrix)
-    else:
-        print "Error"
+    output = ""
+    matrix = Matrix(36, 25, 5, 15.5, 71.5)
+    matrix.propagate()
+    for row in matrix.contactMatrix:
+        rowout = ""
+        for person in row:
+            rowout += str(person) + ", "
+        output += "[" + rowout[0:-2] + "]\n"
+    print output
 
 main()

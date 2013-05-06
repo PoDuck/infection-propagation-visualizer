@@ -19,7 +19,7 @@ class GraphInfect(QDialog, newvacc.Ui_Dialog, Logic.Matrix):
         self.chanceUnvacInfectedBox.valueChanged.connect(self.updateValues)
         self.chanceVacInfectedBox.valueChanged.connect(self.updateValues)
 
-        self.colors = { "vaccinated":Qt.green, "unvaccinated":Qt.gray, "infected":Qt.red, "vacImmune":Qt.darkGreen, "unvacImmune":Qt.darkGray, "vacInfected":Qt.darkMagenta, "unvacInfected":Qt.magenta, "vacLucky":Qt.darkGreen, "unvacLucky":Qt.darkGray }
+        self.colors = { "vaccinated":Qt.green, "unvaccinated":Qt.gray, "infected":Qt.red, "vacImmune":Qt.darkGreen, "unvacImmune":Qt.darkGray, "vacInfected":Qt.darkRed, "unvacInfected":Qt.red, "vacLucky":Qt.green, "unvacLucky":Qt.green }
         self.lastPressed = None
         self.matrixWidthSpinnerChanged()
 
@@ -45,7 +45,7 @@ class GraphInfect(QDialog, newvacc.Ui_Dialog, Logic.Matrix):
         if self.lastPressed == "prime":
             self.drawPrimed(qp)
         elif self.lastPressed == "infect":
-            self.infect(qp)
+            self.drawInfected(qp)
         qp.end()
 
     def prime(self):
@@ -61,9 +61,6 @@ class GraphInfect(QDialog, newvacc.Ui_Dialog, Logic.Matrix):
         self.startY = self.plotStartY + (self.heightY - (self.areaWidth * self.cardinalWidth)) / 2
         
         self.update()
-
-    def infect(self, qp):
-        self.drawInfected(qp)
         
     def drawPrimed(self, qp):
         qp.setBrush(Qt.white)

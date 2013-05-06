@@ -35,7 +35,7 @@ class MainDialog(QDialog, vaccdemo.Ui_Dialog):
         self.connect(self.numPeopleCombo, SIGNAL("currentIndexChanged(int)"), self.recalcValues)
         self.connect(self.numInfectedBox, SIGNAL("valueChanged(int)"), self.recalcValues)
         self.connect(self.numVaccinatedBox, SIGNAL("valueChanged(int)"), self.recalcValues)
-        self.connect(self.chanceVacInfectedBox, SIGNAL("valueChanged(int)"), self.recalcValues)
+        self.connect(self.chanceVacInfectedBox, SIGNAL("valueChanged(double)"), self.recalcValues)
         self.connect(self.chanceUnvacInfectedBox, SIGNAL("valueChanged(double)"), self.recalcValues)
 
     @property

@@ -1,0 +1,3 @@
+There are many people that have trouble understanding why their decision to not vaccinate themselves or their children causes potential and real harm to other people.
+
+In order to help combat the rampant spread of anti-vaccination hysteria that has caused trouble throughout the world, it is necessary to educate people about the reasons vaccinations are important, as well as how safe they are.  This project aims to work toward the former.
